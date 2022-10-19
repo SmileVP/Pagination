@@ -559,29 +559,32 @@ head_row.append(th2);
 //to get the value of current button active
 var clicked_button = 1;
 
+//function for creating the content
+function all_data(i) {
+  let content1 = `<table>
+  <thead>
+  </thead>
+  <tbody>
+  <tr>
+  <td >${arr[i].id}</td>
+  <td >${arr[i].name}</td>
+  <td >${arr[i].email}</td>
+  </tbody>
+  <tr>
+  <table>`;
+  let table_row = document.createElement("tr");
+  table_row.classList.add("item");
+  table_row.innerHTML = content1;
+  table_body.append(table_row);
+}
+
 //to display the first table content as default
 let default_content = () => {
+  clicked_button = 1;
   for (let i = 0; i < 10; i++) {
-    let default_value = `
-          <table>
-          <thead>
-          </thead>
-          <tbody id="t_content">
-          <tr>
-          <td >${arr[i].id}</td>
-          <td >${arr[i].name}</td>
-          <td >${arr[i].email}</td>
-          </tbody>
-          <tr>
-          <table>`;
-
-    let table_row = document.createElement("tr");
-    table_row.classList.add("item");
-    table_row.innerHTML = default_value;
-    table_body.append(table_row);
+    all_data(i);
   }
 };
-
 default_content();
 
 //to create buttons
@@ -644,46 +647,16 @@ first_button.addEventListener("click", () => {
   clicked_button = 1;
 
   for (let i = 0; i < 10; i++) {
-    let content1 = `
-        <table>
-        <thead>
-        </thead>
-        <tbody>
-        <tr>
-        <td >${arr[i].id}</td>
-        <td >${arr[i].name}</td>
-        <td >${arr[i].email}</td>
-        </tbody>
-        <tr>
-        <table>`;
-    let table_row = document.createElement("tr");
-    table_row.classList.add("item");
-    table_row.innerHTML = content1;
-    table_body.append(table_row);
+    all_data(i);
   }
 });
 
 //event for last button
 last_button.addEventListener("click", () => {
   table_body.innerHTML = "";
-  clicked_button=10;
+  clicked_button = 10;
   for (let i = 90; i < arr.length; i++) {
-    let content1 = `
-        <table>
-        <thead>
-        </thead>
-        <tbody>
-        <tr>
-        <td >${arr[i].id}</td>
-        <td >${arr[i].name}</td>
-        <td >${arr[i].email}</td>
-        </tbody>
-        <tr>
-        <table>`;
-    let table_row = document.createElement("tr");
-    table_row.classList.add("item");
-    table_row.innerHTML = content1;
-    table_body.append(table_row);
+    all_data(i);
   }
 });
 
@@ -697,46 +670,14 @@ previous_button.addEventListener("click", () => {
   console.log(x);
   if (x >= 1) {
     for (let i = (x - 1) * 10; i < b * x; i++) {
-      let content1 = `
-        <table>
-        <thead>
-        </thead>
-        <tbody>
-        <tr>
-        <td >${arr[i].id}</td>
-        <td >${arr[i].name}</td>
-        <td >${arr[i].email}</td>
-        </tbody>
-        <tr>
-        <table>`;
-      let table_row = document.createElement("tr");
-      table_row.classList.add("item");
-      table_row.innerHTML = content1;
-
-      table_body.append(table_row);
+      all_data(i);
     }
   } else {
     window.alert("No content before first page");
     let x = 1;
     let b = 10;
     for (let i = (x - 1) * 10; i < b * x; i++) {
-      let content1 = `
-            <table>
-            <thead>
-            </thead>
-            <tbody>
-            <tr>
-            <td >${arr[i].id}</td>
-            <td >${arr[i].name}</td>
-            <td >${arr[i].email}</td>
-            </tbody>
-            <tr>
-            <table>`;
-      let table_row = document.createElement("tr");
-      table_row.classList.add("item");
-      table_row.innerHTML = content1;
-
-      table_body.append(table_row);
+      all_data(i);
     }
   }
 });
@@ -749,24 +690,9 @@ next_button.addEventListener("click", () => {
   clicked_button = x;
   let b = 10;
 
-  if (x < 11){
+  if (x < 11) {
     for (let i = (x - 1) * 10; i < b * x; i++) {
-      let content1 = `
-          <table>
-          <thead>
-          </thead>
-          <tbody>
-          <tr>
-          <td >${arr[i].id}</td>
-          <td >${arr[i].name}</td>
-          <td >${arr[i].email}</td>
-          </tbody>
-          <tr>
-          <table>`;
-      let table_row = document.createElement("tr");
-      table_row.classList.add("item");
-      table_row.innerHTML = content1;
-      table_body.append(table_row);
+      all_data(i);
     }
   } else {
     window.alert("this is your last page");
@@ -774,22 +700,7 @@ next_button.addEventListener("click", () => {
     clicked_button = 10;
 
     for (let i = 90; i < 100; i++) {
-      let content1 = `
-          <table>
-          <thead>
-          </thead>
-          <tbody>
-          <tr>
-          <td >${arr[i].id}</td>
-          <td >${arr[i].name}</td>
-          <td >${arr[i].email}</td>
-          </tbody>
-          <tr>
-          <table>`;
-      let table_row = document.createElement("tr");
-      table_row.classList.add("item");
-      table_row.innerHTML = content1;
-      table_body.append(table_row);
+      all_data(i);
     }
   }
 });
